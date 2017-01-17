@@ -1,11 +1,10 @@
-package com.tsystems.ecrono.dto;
+package com.tsystems.ecrono.dto.create;
 
 import lombok.Data;
 
 @Data
-public class Dorsal {
+public class CreateDorsal {
 
-    private long id;
     private String chipCode;
     private int dorsalNumber;
     private Long raceId;
