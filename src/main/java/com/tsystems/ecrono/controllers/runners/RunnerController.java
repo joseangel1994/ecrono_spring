@@ -38,7 +38,7 @@ public class RunnerController {
     @RequestMapping(method = RequestMethod.POST)
     public RunnerEntity createRace(@RequestParam(name = "fullName", required = true) String fullName) {
 	RunnerEntity runnerEntity = new RunnerEntity();
-	runnerEntity.setFullName(fullName);
+	runnerEntity.setName(fullName);
 	runnerRepository.save(runnerEntity);
 	return runnerEntity;
     }
