@@ -1,4 +1,4 @@
-package com.tsystems.ecrono.dto;
+package com.tsystems.ecrono.dto.create;
 
 import java.time.Instant;
 
@@ -7,9 +7,8 @@ import com.tsystems.ecrono.domain.component.RaceType;
 import lombok.Data;
 
 @Data
-public class Race {
+public class CreateRace {
 
-    private Long id;
     private String name;
     private Double distanceInMeters;
     private RaceType type;
