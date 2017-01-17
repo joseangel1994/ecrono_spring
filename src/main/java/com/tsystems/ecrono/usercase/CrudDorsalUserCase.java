@@ -30,7 +30,7 @@ public class CrudDorsalUserCase {
 	RunnerEntity runnerEntity = new RunnerEntity();
 	runnerEntity.setId(runnerId);
 	DorsalEntity runnerInDb = dorsalRepository.findByRaceIdAndRunner(raceId, runnerEntity);
-	if (runnerInDb != null) {
+	if (runnerInDb == null) {
 	    DorsalEntity dorsal = mapper.toDorsalEntity(raceId, runnerId, createDorsal);
 	    dorsalRepository.save(dorsal);
 	    return mapper.toDorsal(dorsal);

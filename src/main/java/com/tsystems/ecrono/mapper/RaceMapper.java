@@ -1,6 +1,8 @@
 package com.tsystems.ecrono.mapper;
 
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,9 @@ import com.tsystems.ecrono.dto.update.UpdateRace;
 
 @Component
 public class RaceMapper {
+
+    DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME.withLocale(Locale.UK)
+	    .withZone(ZoneId.systemDefault());
 
     public RaceEntity toRaceEntity(CreateRace createRace) {
 	RaceEntity raceToCreate = new RaceEntity();
@@ -37,7 +42,8 @@ public class RaceMapper {
 	target.setId(raceToReturn.getId());
 	target.setDistanceInMeters(raceToReturn.getDistanceInMeters());
 	target.setType(toRaceType(raceToReturn.getDistanceInMeters()));
-	String formatDate = DateTimeFormatter.ISO_DATE_TIME.format(raceToReturn.getInitTime());
+
+	String formatDate = formatter.format(raceToReturn.getInitTime());
 	target.setInitTime(formatDate);
 	return target;
     }
