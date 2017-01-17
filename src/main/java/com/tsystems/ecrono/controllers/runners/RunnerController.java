@@ -4,53 +4,52 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tsystems.ecrono.domain.RunnerEntity;
-import com.tsystems.ecrono.repository.RunnerRepository;
+import com.tsystems.ecrono.dto.Runner;
+import com.tsystems.ecrono.dto.create.CreateRunner;
+import com.tsystems.ecrono.dto.update.UpdateRunner;
+import com.tsystems.ecrono.usercase.CrudRunnerUsercase;
 
 @RestController // Para resolver devolviendo un json (usado para las API REST)
 @RequestMapping("runners")
 
 public class RunnerController {
 
-    private final RunnerRepository runnerRepository;
+    private final CrudRunnerUsercase crudRunnerUserCase;
 
     @Autowired
-    public RunnerController(RunnerRepository runnerRepository) {
+    public RunnerController(CrudRunnerUsercase crudRunnerUserCase) {
 	super();
-	this.runnerRepository = runnerRepository;
+	this.crudRunnerUserCase = crudRunnerUserCase;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<RunnerEntity> getRunners() {
-	return runnerRepository.findAll();
+    public List<Runner> getRunners() {
+	return crudRunnerUserCase.findAll();
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.GET)
-    public RunnerEntity getRunnerByName(@PathVariable("name") Long runnerId) {
-	return runnerRepository.findOne(runnerId);
+    public Runner getRunnerByName(@PathVariable("name") Long runnerId) {
+	return crudRunnerUserCase.getRunnerById(runnerId);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public RunnerEntity createRace(@RequestParam(name = "fullName", required = true) String fullName) {
-	RunnerEntity runnerEntity = new RunnerEntity();
-	runnerEntity.setName(fullName);
-	runnerRepository.save(runnerEntity);
-	return runnerEntity;
+    public Runner createRunner(@RequestBody CreateRunner createRunner) {
+	return crudRunnerUserCase.createNewRunner(createRunner);
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.PUT)
-    public RunnerEntity editRunner() {
-	throw new IllegalArgumentException("Not implemented yet");
+    public Runner editRunner(@PathVariable("id") Long runnerId, @RequestBody UpdateRunner updateRunner) {
+	return crudRunnerUserCase.updateRunner(updateRunner, runnerId);
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.DELETE)
-    public RunnerEntity deleteRunner() {
-	throw new IllegalArgumentException("Not implemented yet");
+    public void deleteRunner(@PathVariable("id") Long runnerId) {
+	crudRunnerUserCase.delete(runnerId);
     }
 
 }
