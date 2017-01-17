@@ -7,5 +7,4 @@ public class UpdateDorsal {
 
     private String chipCode;
     private int dorsalNumber;
-    private Long raceId;
 }

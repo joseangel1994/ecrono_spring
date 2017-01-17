@@ -33,7 +33,7 @@ public class RunnerController {
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.GET)
-    public Runner getRunnerByName(@PathVariable("name") Long runnerId) {
+    public Runner getRunnerByName(@PathVariable("id") Long runnerId) {
 	return crudRunnerUserCase.getRunnerById(runnerId);
     }
 

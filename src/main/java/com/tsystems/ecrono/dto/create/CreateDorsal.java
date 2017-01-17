@@ -6,6 +6,5 @@ import lombok.Data;
 public class CreateDorsal {
 
     private String chipCode;
-    private int dorsalNumber;
-    private Long raceId;
+    private Integer dorsalNumber;
 }
