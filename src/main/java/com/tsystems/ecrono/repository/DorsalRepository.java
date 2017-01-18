@@ -19,6 +19,7 @@ public interface DorsalRepository extends JpaRepository<DorsalEntity, Long> {
     @Query(value = "FROM DorsalEntity d LEFT JOIN d.runner r WHERE d.raceId =?1 AND r.id = ?2")
     DorsalEntity findByRaceIdAndRunner(Long raceId, Long runnerId);
 
+    // Consulta en SQL
     @Query(value = "delete from dorsals where race_id =?1 and runner_id =?2", nativeQuery = true)
     void deleteByRaceIdAndRunner(Long raceId, Long runnerId);
 

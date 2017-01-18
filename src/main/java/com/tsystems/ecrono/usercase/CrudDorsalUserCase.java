@@ -53,6 +53,7 @@ public class CrudDorsalUserCase {
 	// DorsalEntity findByRaceIdAndRunner =
 	// dorsalRepository.findByRaceIdAndRunner(raceId, runnerEntity);
 	// dorsalRepository.delete(findByRaceIdAndRunner);
+	dorsalRepository.deleteByRaceIdAndRunner(raceId, runnerId);
     }
 
 }
