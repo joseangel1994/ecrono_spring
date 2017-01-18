@@ -12,4 +12,6 @@ public interface RunnerRepository extends JpaRepository<RunnerEntity, Long> {
 
     List<RunnerEntity> findByNameContains(String prefix);
 
+    RunnerEntity findById(Long runnerId);
+
 }

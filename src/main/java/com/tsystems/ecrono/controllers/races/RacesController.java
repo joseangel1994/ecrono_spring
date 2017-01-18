@@ -1,5 +1,6 @@
 package com.tsystems.ecrono.controllers.races;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tsystems.ecrono.domain.component.RaceType;
 import com.tsystems.ecrono.dto.Race;
 import com.tsystems.ecrono.dto.create.CreateRace;
 import com.tsystems.ecrono.dto.update.UpdateRace;
@@ -28,8 +31,15 @@ public class RacesController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Race> getRaces() {
-	return crudRaceUserCase.findAll();
+    public List<Race> getRaces(@RequestParam(value = "type", required = false) RaceType raceType,
+	    @RequestParam(value = "init_time", required = false) //
+	    Instant initTime) {
+	// Falta hacer la conversion a un formato de time adecuado
+	if (raceType == null && initTime == null) {
+	    return crudRaceUserCase.findAll();
+	} else {
+	    return crudRaceUserCase.findByTypeAndDateFilter(raceType, initTime);
+	}
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.GET)

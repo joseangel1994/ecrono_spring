@@ -1,13 +1,15 @@
 package com.tsystems.ecrono.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.time.Instant;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.tsystems.ecrono.domain.RaceEntity;
+import com.tsystems.ecrono.domain.component.RaceType;
 
 public interface RaceRepository extends JpaRepository<RaceEntity, Long> {
 
-    Page<RaceEntity> findByNameContains(String prefix, Pageable pageable);
+    List<RaceEntity> findByTypeAndInitTimeBefore(RaceType raceType, Instant initTime);
 
 }
