@@ -20,12 +20,14 @@ import javax.persistence.Table;
 import com.tsystems.ecrono.domain.component.RaceType;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
 @Table(name = "races")
 @Data
 @ToString(of = { "id" })
+@EqualsAndHashCode(of = { "id" })
 public class RaceEntity {
 
     @Id

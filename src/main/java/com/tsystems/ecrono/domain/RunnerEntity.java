@@ -14,12 +14,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
 @Table(name = "runners")
 @Data
 @ToString(of = { "id" })
+@EqualsAndHashCode(of = { "id" })
 public class RunnerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

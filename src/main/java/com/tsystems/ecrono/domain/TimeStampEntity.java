@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
@@ -22,6 +23,7 @@ import lombok.ToString;
 )
 @Data
 @ToString(of = { "timeStamp" })
+@EqualsAndHashCode(of = { "timeStamp" })
 public class TimeStampEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
