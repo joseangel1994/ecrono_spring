@@ -1,13 +1,17 @@
 package com.tsystems.ecrono.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.tsystems.ecrono.domain.RunnerEntity;
 
 public interface RunnerRepository extends JpaRepository<RunnerEntity, Long> {
 
-    Page<RunnerEntity> findByNameContains(String prefix, Pageable pageable);
+    // Page<RunnerEntity> findByNameContains(String prefix, Pageable pageable);
+
+    List<RunnerEntity> findByNameContains(String prefix);
+
+    RunnerEntity findById(Long runnerId);
 
 }

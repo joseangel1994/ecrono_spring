@@ -50,7 +50,10 @@ public class CrudDorsalUserCase {
     public void delete(Long raceId, Long runnerId) {
 	// RunnerEntity runnerEntity = new RunnerEntity();
 	// runnerEntity.setId(runnerId);
-	// dorsalRepository.deleteByRaceIdAndRunner(raceId, runnerEntity);
+	// DorsalEntity findByRaceIdAndRunner =
+	// dorsalRepository.findByRaceIdAndRunner(raceId, runnerEntity);
+	// dorsalRepository.delete(findByRaceIdAndRunner);
+	dorsalRepository.deleteByRaceIdAndRunner(raceId, runnerId);
     }
 
 }

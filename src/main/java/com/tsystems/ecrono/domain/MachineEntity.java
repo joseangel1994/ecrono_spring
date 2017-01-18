@@ -12,12 +12,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
 @Table(name = "machines")
 @Data
 @ToString(of = { "id" })
+@EqualsAndHashCode(of = { "id" })
 public class MachineEntity {
 
     @Id
