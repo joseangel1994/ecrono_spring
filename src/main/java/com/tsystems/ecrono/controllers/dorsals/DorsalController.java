@@ -32,6 +32,8 @@ public class DorsalController {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 
+    // El Response Entity se puede utilizar para devolver el codigo http que
+    // queramos
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Dorsal> createDorsal(@PathVariable(value = "runnerId") Long runnerId,
 	    @PathVariable(value = "raceId") Long raceId, @RequestBody CreateDorsal createDorsal) {

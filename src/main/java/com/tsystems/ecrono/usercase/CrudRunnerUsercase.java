@@ -63,6 +63,16 @@ public class CrudRunnerUsercase {
 	return listToReturn;
     }
 
+    public List<Runner> findByNameFilter(String filter) {
+
+	List<RunnerEntity> findByNameContains = runnerRepository.findByNameContains(filter);
+	List<Runner> listToReturn = new LinkedList<>();
+	for (RunnerEntity runner : findByNameContains) {
+	    listToReturn.add(mapper.toRunner(runner));
+	}
+	return listToReturn;
+    }
+
     public void delete(Long runnerId) {
 	runnerRepository.delete(runnerId);
     }
