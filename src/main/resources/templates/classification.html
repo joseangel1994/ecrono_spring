@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:if="${true}">Hola</div>
+	<div th:if="${false}">Adios</div>
+	<h1>Clasificacion&oacute;n</h1>
+	<ul>
+	<li th:each="c,status : ${nombre1}">
+		<span th:text="${status.index}"></span>
+		<span th:text="${c.name}"></span>
+	</li>
+	</ul>
+	
+	<form action="/runner"></form>
+</body>
+</html>
